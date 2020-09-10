@@ -1,0 +1,323 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        .d-grid {
+            display: grid
+        }
+    </style>
+    
+    <script>
+    
+        (function() {
+          
+            setTimeout(() => {
+                const win = document.getElementsByClassName('innerWidth')
+                const sizes = [
+                  { label: 'xl', size: 1200},
+                  { label: 'lg', size: 992},
+                  { label: 'md', size: 768},
+                  { label: 'sm', size: 576},
+                ]
+                window.addEventListener('resize', function (event) {
+                    let prefix = sizes.find(bp => window.innerWidth >= bp.size) || {label: 'xs'}
+                    for(i = 0; i < win.length; i++){
+                        win[i].innerHTML = `${prefix.label} - ${window.innerWidth}`;
+                    }
+                })
+            }, 0)
+            
+        })();
+
+    </script>
+    
+    
+    
+    <section class="m-4 py-4 card">
+        
+        <div class="container"> 
+            <h1 class="text-center pt-5">O básico de grid</h1>
+
+            <ul>
+                <li>
+                    Em um layout grid, o conteúdo deve ser colocado dentro das colunas, e somente as colunas podem ser filhas diretas de uma "row".<br>
+                    <b>Exemplo:</b> <br>
+                    <div class="pl-4">
+                        <p>
+                            row<br>
+                            ├── col <br>
+                            │  <span class="pl-4">└──</span> Content<br>
+                            └── col<br>
+                               <span class="pl-5">└──</span> Conntent
+
+                        </p>
+                    </div>
+                    
+                </li>
+                <li>
+                    Para controlarmos a responsividade, temos cinco breakpoints, que são baseados em media queries <b>min-width.</b>
+                    <br>São eles:  xs, sm, md, lg, xl (extra-small, small, medium, large, extra-large) respectivamente.   
+                    
+                    <br> Pelas media queries serem baseadas em <b>min-width</b>, sempre que setarmos um breakpoint <b>.col-md-4</b> por exemplo, esse padrão vai servir para os breakpoints <b>xl, lg e md</b>, mas não para os demais (xs, sm). (Isso também se aplica aos demais breakpoints). <b><i>ref exemplo 1</i></b>
+                    
+                    <img src="/assets/grid/tabela-sizes.jpg" class="w-100"/>
+
+                </li>
+            </ul>
+        </div>
+        
+        <!--   Limite de colunas   -->
+        <section>
+          <div class="container">
+          <h1>Limite de Colunas</h1>
+            <p class="p-3">
+              O Grid do bootstrap é dividido em 12 colunas dentro de uma <b>.row</b> individual. 
+              Isto faz com que as colunas quebrem para próxima linha caso a soma das colunas excedam 12.
+            </p>
+            <p class="h2 mb-4">Exemplo</p>
+            <p>Soma das colunas resultam em 12, logo não há quebra.</p>
+            <div>
+              <b>row</b>
+              <div class="row bg-danger p-5">
+                <div class="col-8 bg-success border p-4">
+                  <b class="text-white">col-8</b>
+                </div><div class="col-4 bg-success border p-4">
+                  <b class="text-white">col-4</b>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-5">
+              <p>Neste caso, a soma das colunas excedem 12 e a coluna (<b>col-5</b>) é jogada para próxima linha.</p>
+              <div>
+                <b>row</b>
+                <div class="row bg-danger p-5">
+                  <div class="col-8 bg-success border p-4">
+                    <b class="text-white">col-8</b>
+                  </div><div class="col-5 bg-success border p-4">
+                    <b class="text-white">col-5</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> 
+      
+        
+        <!--  Exemplo de Grid Pre-definido -->
+        <section>
+            <div class="container">
+                <div>
+                  <header>
+                      <h1 class="pt-5">Como os breakpoints funcionam?</h1>
+                  </header>
+                  <br>
+                  
+                  <div class="container">
+                    <p>
+                      Quando falamos em breakpoints usando bootstrap, temos que ter em mente o seguinte:
+                      <b>os breakpoints trabalham com min-width.</b>
+                      <br>
+                      Isto quer dizer que, quando um breakpoint é utilizado, todos os outros breakpoints que vierem acima dele vão receber 
+                      o mesmo efeito.
+                    </p>
+                    
+                    <div>
+                      <span class="h2">Por exemplo:</span>
+                      <div>
+                        <p>Se utilizarmos o breakpoint <b>col-md (medium >= 768px)</b>, ele vai aplicar o medium e para todos os breakpoints
+                        que estiverem acima dele, ou seja, <b>md, lg, xl (medium, large, extra-large).</b>
+                        </p>
+
+                        <div class="w-100">
+                          <p>
+                            No exemplo abaixo, utilizamos o breakpoint medium com um tamanho de coluna específica <b>col-md-4.</b>
+                            Com isso teremos uma linha com 3 colunas <b>(12 "espaços" / 4)</b> nas telas medium, large e extra large.
+                          </p>
+
+                          <p class="h1 text-center mt-5"> >= 768 </p>
+                          <img src="assets/grid/ex1-lg.jpg" class="w-100" />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
+                    <div>
+                      <p>Em contrapartida, todos os breakpoints que estiverem abaixo do breakpoint utilizado, vão receber o tamanho default e ocupar todo o espaço de uma <b>linha(row)</b>.
+                      </p>
+                      
+                      <div class="w-100 d-grid">
+                        <p class="h1 text-center mt-5"> &lt; 768 </p>
+                        <img src="assets/grid/ex1-md.jpg" class="w-50 mx-auto" />
+                      </div>
+                    </div>
+                    
+                  
+                  </div>
+                </div>
+                
+              
+                <div class="mt-5">
+                   <header class="d-flex align-items-end justify-content-between">
+                      <h1>Exemplo Prático
+                        <br>
+                        <span class="text-muted" style="font-size: 15px">(Faça o resize do navegador)</span>
+                      </h1>
+                      
+                      <span class="innerWidth h2 border-bottom"></span>
+                  </header>
+                  
+                  row 
+                  <div class="row bg-danger text-white p-5">
+                      <div class="col-md-4 bg-primary p-4 border">
+                          col-md-4
+                          <div class="card bg-success p-3">
+                              card -> content
+                          </div>
+                      </div> 
+                      <div class="col-md-4 bg-primary p-4 border">
+                          col-md-4
+                          <div class="card bg-success p-3">
+                              card -> content
+                          </div>
+                      </div>
+                      <div class="col-md-4 bg-primary p-4 border">
+                          col-md-4
+                          <div class="card bg-success p-3">
+                              card -> content
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              
+            </div>
+        </section>
+        
+    </section>
+
+    <section class="m-4 py-4 card">
+  
+        <!--  Exemplo de Grid automático -->
+        <section>
+            <div class="container">
+            <header class="d-flex align-items-end justify-content-between">
+                <h1 class="pt-5"  >Grid automático</h1>
+            </header>
+            <div>
+              <p>Podemos definir de maneira rápida e prática o número de colunas que melhor se encaixam com o conteúdo do layout
+                utilizando o <b>.row-cols-*</b>.<br>
+                Um exemplo prático para usar este tipo de classe é quando a divisão das somas das colunas não resulta em um número inteiro. 
+                <br>
+                <br>
+              </p>
+              
+              <div>
+                <b>Por Exemplo:</b><br>
+                <p>Se quisermos dividir o layout em 5 colunas, teriamos que dividir 12 por 5 que resultaria em 2.4, e não temos um tamanho de grid
+                  <b>.col-2.4</b>.
+                </p> 
+                
+                <div>
+                  <p>Se fossemos utilizar <b>col-3</b>, uma coluna sempre quebraria para próxima linha...</p>
+                  <b>.row</b>
+                  <div class="row bg-danger p-2">
+                    <div class="col-3 bg-success border text-white"> .col-3 </div>
+                    <div class="col-3 bg-success border text-white"> .col-3 </div>
+                    <div class="col-3 bg-success border text-white"> .col-3 </div>
+                    <div class="col-3 bg-success border text-white"> .col-3 </div>
+                    <div class="col-3 bg-success border text-white"> .col-3 </div>
+                  </div> 
+                </div>
+                
+                <div>
+                  <p class="mt-4 mb-3">Nossa opçao seria utilizar <b>5 .col-2</b> e alinhar ao centro utilizando a classe 
+                    <b>justify-content-center.</b><br>
+                    Mas como podemos ver, sempre vai existir um espaço dos dois lados do nosso grid das margens, o que não é bom.
+                  </p>
+                  
+                  <b>.row .justify-content-center</b>
+                  <div class="row bg-danger p-2 justify-content-center">
+                    <div class="col-2 bg-success border text-white"> .col-2 </div>
+                    <div class="col-2 bg-success border text-white"> .col-2 </div>
+                    <div class="col-2 bg-success border text-white"> .col-2 </div>
+                    <div class="col-2 bg-success border text-white"> .col-2 </div>
+                    <div class="col-2 bg-success border text-white"> .col-2 </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-5">
+              <header>
+                <h2> Solução </h2>
+              </header>  
+              
+              <p>Para resolver este impasse é simples, basta que utilizemos a classe <b>.row-cols</b> como um atalhado na <b>.row</b> mãe e teremos as colunas automaticamente ajustadas ao tamanho do nosso grid.
+              </p>
+              <div>
+                <b>.row .row-cols</b>
+                <div class="row row-cols bg-danger p-2">
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                </div>
+              </div>  
+              
+              <div class="mt-5">
+                <p>
+                  Também Podemos usar breakpoints junto aos <b>.row-cols</b> da seguinte forma.
+                  <br>
+                </p>
+                <p class="bg-secondary shadow p-1 w-25 font-weight-bold text-white text-center">.row-cols-{breakpoint}-*</p>
+                <p>Se definirmos a classe <b>.row-cols-md-5</b>, estaremos querendo dizer que em uma mesma linha <b>.row</b> teremos 5 colunas.</p>
+                <p>Da mesma forma, se definirmos uma <b>.row-cols-md-3</b> estaremos dizendo que cada linha vai ter 3 colunas. </p>
+                <div class="d-flex justify-content-between mt-5">
+                  <b>.row .row-cols-lg-5 .row-cols-md-3</b>
+                  <span class="innerWidth font-weight-bold"></span>
+                </div>
+                <div class="row row-cols-lg-5 row-cols-md-3  bg-danger p-2">
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                  <div class="col bg-success text-white p-2 border"> <b>.col</b> </div>
+                </div>
+              </div>
+            </div>
+              
+            
+          </div>
+        </section>
+    
+    </section>
+
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</body>    
+</html>
