@@ -1,0 +1,151 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <style>
+      .d-grid {
+          display: grid;
+      }
+
+      .w-33 {
+        width: 33.3%;
+      }
+    </style>
+
+    
+    <section class="m-4 py-4 card border">
+      <div class="container"> 
+        <h1 class="text-center pt-5">Alinhamentos com bootstrap</h1>
+        
+        <p>
+          Uma das coisas mais importantes no desenvolvimento web em geral é dominar bem como alinhar itens de maneira simples
+          horizontalmente ou verticalmente.
+        </p>
+        <p>Utilizando o bootstrap, nós temos N formas de obter um mesmo resultado de alinhamento, porém é importante buscar o jeito mais simples.</p>
+        <p>Digamos que nós queiramos centralizar items horizontalmente de maneira rápida utilizando bootstrap, qual caminho seguir?</p>
+        
+        <div>
+          <h1>Exemplo de alinhamentos Horizontais</h1>
+          <p>Os jeitos mais comuns de se alinhar conteúdos é utilizando a <b>margem</b> ou utilizando <b>flex layout.</b></p>
+        
+          <div>
+            <b>Utilizando margem</b>
+            <div class="w-100 p-3 border border-danger">
+              <p class=" font-weight-bold text-center">width: 100%</p>
+              
+              <div class="border p-2 mb-2 bg-dark">
+                <div class="w-33 p-2 bg-success font-weight-bold text-white h4 border text-center"> 33% </div>
+              </div>
+              
+              <div class="border p-2 mb-2 bg-dark">
+                <div class="w-33 p-2 bg-success font-weight-bold text-white h4 border text-center mx-auto"> 33% - .mx-auto </div>
+              </div>
+              
+              <div class="border p-2 mb-2 bg-dark">
+                <div class="w-33 p-2 bg-success font-weight-bold text-white h4 border text-center ml-auto"> 33%  - .ml-auto </div>
+              </div>
+              
+            </div>
+          </div>          
+          
+          <div class="mt-5">
+            <b>Utilizando flex layout</b>
+            <div class="w-100 p-3 border border-danger">
+              <p class=" font-weight-bold text-center">width: 100%</p>
+              
+              <div class="border p-2 mb-2 bg-dark">
+                <b class="text-white">.d-flex .justify-content-start</b>
+                <div class="d-flex justify-content-start">
+                  <div class="w-33 p-2 bg-success font-weight-bold text-white h4 border text-center"> 33% </div>
+                </div>
+              </div>
+              
+              <div class="border p-2 mb-2 bg-dark">
+                <b class="text-white">.d-flex .justify-content-center</b>
+                <div class="d-flex justify-content-center">
+                  <div class="w-33 p-2 bg-success font-weight-bold text-white h4 border text-center"> 33% </div>
+                </div>
+              </div>
+              
+              <div class="border p-2 mb-2 bg-dark">
+                <b class="text-white">.d-flex .justify-content-end</b>
+                <div class="d-flex justify-content-end">
+                  <div class="w-33 p-2 bg-success font-weight-bold text-white h4 border text-center"> 33% </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="m-4 py-4 card border">
+      <div class="container"> 
+        <div>
+          <h1>Exemplo de alinhamentos Verticais</h1>
+          <div>
+            <b>Utilizando margem</b>
+            <p>
+              Quando se trata de alinhamento vertical, temos alguns impasses utilizando a margem, pois ela só alinha automaticamente no centro;
+              além disso também é necessário utilizar ou o <b>display: flex</b> ou o <b>display: grid</b> para que o alinhamento funcione.
+            </p>
+            
+            <p class=" font-weight-bold text-center m-0">width: 100% / height: 200px </p>
+            <div class="w-100 p-3 border border-danger" style="height: 200px">
+              <p class="mb-0 font-weight-bold">.w-100 .h-100 .d-flex</p>
+              <div class="w-100 d-flex bg-danger" style="height: calc(100% - 23px)">
+                <div class="my-auto mx-auto bg-success p-3 text-white font-weight-bold"> .mx-auto .my-auto</div>
+              </div>
+              
+             </div>
+            <p class="bg-secondary text-white mt-3 w-50 p-2 shadow"><i><b>Nota:</b> Todo o retangulo vermelho tem uma altura (height) de 100% baseado no <b>container pai de 200px menos a altura do paragrafo. { height: calc(100% - 23px) }.</b></i></p>
+          </div>          
+          
+          <div class="mt-5">
+            <b>Utilizando flex layout</b>
+            <div class="w-100 p-3 border border-danger">
+              <p class=" font-weight-bold text-center">width: 100%</p>
+              
+              <div class="row">
+                <div class="col-4 bg-danger border d-flex align-items-start p-3" style="height: 200px">
+                  <div class="bg-success p-3 w-100 text-white font-weight-bold text-center">
+                    align-items-start
+                  </div>
+                </div>
+                
+                <div class="col-4 bg-danger border d-flex align-items-center p-3" style="height: 200px">
+                  <div class="bg-success p-3 w-100 text-white font-weight-bold text-center">
+                    align-items-center
+                  </div>
+                </div>
+                
+                <div class="col-4 bg-danger border d-flex align-items-end p-3" style="height: 200px">
+                  <div class="bg-success p-3 w-100 text-white font-weight-bold text-center">
+                    align-items-end
+                  </div>
+                </div>
+                
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+    
+    
+    
+    
+    
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</body>    
+</html>
